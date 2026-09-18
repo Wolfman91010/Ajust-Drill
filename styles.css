@@ -1,0 +1,144 @@
+:root {
+  --bg: #060914;
+  --panel: #0b1128;
+  --ask-bg: #0d132b;
+  --field: #111a35;
+  --field-border: #3d4f93;
+  --reading: #101935;
+  --text: #ebecff;
+  --muted: #b9c4ff;
+  --label: #e8dfff;
+  --title: #fef7ff;
+  --accent: #f4d7ff;
+  --cyan: #7fe0ff;
+  --button-text: #171f3f;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.topbar {
+  background: #050712;
+  border-bottom: 1px solid #1a2348;
+  padding: 0.85rem 1.25rem;
+}
+
+.brand {
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+main {
+  width: min(820px, 100%);
+  margin: 0 auto;
+  flex: 1;
+}
+
+.hero {
+  background: var(--panel);
+  padding: 1.6rem 1.4rem 1.2rem;
+}
+
+h1 {
+  margin: 0 0 0.45rem;
+  font-size: clamp(1.6rem, 4vw, 2rem);
+  font-weight: 650;
+  color: #fff;
+}
+
+.lede {
+  margin: 0;
+  color: var(--muted);
+  max-width: 38rem;
+}
+
+.ask {
+  background: var(--ask-bg);
+  padding: 1rem 1.4rem 1.35rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: var(--label);
+  font-size: 0.95rem;
+}
+
+textarea {
+  width: 100%;
+  background: var(--field);
+  color: #f3ecff;
+  border: 1px solid var(--field-border);
+  border-radius: 2px;
+  padding: 0.7rem 0.75rem;
+  font: inherit;
+  resize: vertical;
+  outline: none;
+}
+
+textarea:focus {
+  border-color: #7fe0ff;
+}
+
+button {
+  margin-top: 0.75rem;
+  background: #f4f6ff;
+  color: var(--button-text);
+  border: 1px solid #c9d0ef;
+  padding: 0.38rem 0.7rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:hover { filter: brightness(1.05); }
+button:active { transform: translateY(1px); }
+
+.reading {
+  background: var(--reading);
+  padding: 2.2rem 1.4rem 3rem;
+  min-height: 14rem;
+}
+
+.sign {
+  margin: 0 0 0.7rem;
+  color: var(--cyan);
+  font-size: 0.95rem;
+}
+
+.reading h2 {
+  margin: 0 0 0.7rem;
+  color: var(--title);
+  font-size: clamp(1.35rem, 3.4vw, 1.85rem);
+  font-weight: 650;
+}
+
+.reading p#body {
+  margin: 0;
+  color: #dfe6ff;
+  max-width: 46rem;
+  line-height: 1.55;
+}
+
+footer {
+  padding: 1rem 1.4rem 1.4rem;
+  color: #8b96c9;
+  font-size: 0.82rem;
+}
+
+@media (max-width: 640px) {
+  .hero, .ask, .reading { padding-left: 1rem; padding-right: 1rem; }
+}

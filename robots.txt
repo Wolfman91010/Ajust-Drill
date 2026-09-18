@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://wolfman91010.github.io/Ajust-Drill/sitemap.xml
