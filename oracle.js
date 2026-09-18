@@ -60,3 +60,42 @@ questionEl.addEventListener("keydown", (event) => {
     askCosmos();
   }
 });
+consultBtn.addEventListener("click", askCosmos);
+questionEl.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) {
+        askCosmos();
+    }
+});
+
+function speakCurrentOmen() {
+    if (!('speechSynthesis' in window)) {
+        console.warn("Speech synthesis is not supported in this browser.");
+        return;
+    }
+
+    const omenParagraph = document.querySelector('section[aria-live="polite"] p:last-of-type') || 
+                           document.querySelector('.oracle-omen-body');
+
+    if (!omenParagraph) return;
+
+    let rawText = omenParagraph.innerText;
+    let cleanOmenText = rawText.replace(/Your question,.*?, is being carried by.*?\./gs, "").trim();
+
+    if (!cleanOmenText) {
+        cleanOmenText = rawText;
+    }
+
+    const utterance = new SpeechSynthesisUtterance(cleanOmenText);
+    utterance.rate = 0.92;
+    utterance.pitch = 1.0;
+
+    const voices = window.speechSynthesis.getVoices();
+    const preferredVoice = voices.find(v => v.lang.includes('en') && (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Samantha'))) || voices[0];
+    
+    if (preferredVoice) {
+        utterance.voice = preferredVoice;
+    }
+
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(utterance);
+}
